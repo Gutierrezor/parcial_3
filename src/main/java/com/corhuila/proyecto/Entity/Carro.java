@@ -8,8 +8,10 @@ public class Carro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "marca", length = 50, nullable = false)
     private String marca;
+
     @Column(name = "modelo", length = 50, nullable = true)
     private String modelo;
 
@@ -22,6 +24,12 @@ public class Carro {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoriaId;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuarioId;
+
+    // getters y setters
 
     public Long getId() {
         return id;
@@ -46,28 +54,28 @@ public class Carro {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-
     public String getPlaca() {
         return placa;
     }
-
     public void setPlaca(String placa) {
         this.placa = placa;
     }
-
     public String getColor() {
         return color;
     }
-
     public void setColor(String color) {
         this.color = color;
     }
-
     public Categoria getCategoriaId() {
         return categoriaId;
     }
-
     public void setCategoriaId(Categoria categoriaId) {
         this.categoriaId = categoriaId;
+    }
+    public Usuario getUsuarioId() {
+        return usuarioId;
+    }
+    public void setUsuarioId(Usuario usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }
